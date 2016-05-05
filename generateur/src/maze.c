@@ -5,7 +5,7 @@
 ** Login   <troncy_l@epitech.net>
 ** 
 ** Started on  Sat Apr 30 18:15:59 2016 Lucas Troncy
-** Last update Sat Apr 30 19:23:27 2016 Lucas Troncy
+** Last update Thu May 05 09:49:55 2016 Lucas Troncy
 */
 
 #include <stdlib.h>
@@ -13,22 +13,19 @@
 #include <time.h>
 #include <stdio.h>
 
+int	modifier(int *, int *, int *, int *);
+
 int	solution(int **maze, int x, int y)
 {
   int	a;
   int	b;
-  int	nb;
 
   a = 0;
   b = 0;
   maze[a][b] = 0;
   while (maze[y - 1][x -1])
     {
-      nb = rand() % 2;
-      if (nb && a < y - 1)
-	++a;
-      else if (!nb && b < x -1)
-	++b;
+      modifier(&a, &b, &x, &y);
       maze[a][b] = 0;
     }
   return (0);
