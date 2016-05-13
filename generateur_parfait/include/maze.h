@@ -5,7 +5,7 @@
 ** Login   <troncy_l@epitech.net>
 ** 
 ** Started on  Thu May 12 13:26:43 2016 Lucas Troncy
-** Last update Thu May 12 14:28:11 2016 Lucas Troncy
+** Last update Fri May 13 10:42:42 2016 Lucas Troncy
 */
 
 #ifndef MAZE_H_
@@ -29,5 +29,6 @@ int			check_down(t_all *all, int *, int *);
 int			check_left(t_all *all, int *, int *);
 int			check_right(t_all *all, int *, int *);
 bool			is_continuable(t_all *, int, int);
+int			all_hunt(t_all *, int, int);
 
 #endif /* MAZE_H_ */

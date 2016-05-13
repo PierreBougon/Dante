@@ -5,7 +5,7 @@
 ** Login   <troncy_l@epitech.net>
 ** 
 ** Started on  Thu May 12 13:54:56 2016 Lucas Troncy
-** Last update Thu May 12 14:35:02 2016 Lucas Troncy
+** Last update Fri May 13 10:11:40 2016 Lucas Troncy
 */
 
 #include <stdbool.h>
