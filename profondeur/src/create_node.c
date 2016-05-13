@@ -5,7 +5,7 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Wed May 11 22:02:04 2016 bougon_p
-** Last update Thu May 12 15:32:36 2016 bougon_p
+** Last update Fri May 13 00:28:18 2016 bougon_p
 */
 
 #include "dante.h"
@@ -91,5 +91,6 @@ t_node		*create_new_node(t_node ***save, t_pos *pos)
     new->north = NULL;
   new->east = NULL;
   new->south = NULL;
+  new->checked = false;
   return (new);
 }

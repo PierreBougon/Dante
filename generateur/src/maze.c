@@ -1,11 +1,11 @@
 /*
 ** maze.c for maze funcs in /home/lokoum/prog/dante/generateur/src
-** 
+**
 ** Made by Lucas Troncy
 ** Login   <troncy_l@epitech.net>
-** 
+**
 ** Started on  Sat Apr 30 18:15:59 2016 Lucas Troncy
-** Last update Thu May 05 09:49:55 2016 Lucas Troncy
+** Last update Fri May 13 16:22:03 2016 bougon_p
 */
 
 #include <stdlib.h>
@@ -91,7 +91,7 @@ int	randomize(int **maze, int x, int y)
 
 int	maze_it(int **maze, int x, int y)
 {
-  srand(time(NULL));
+  srand(time(NULL) * getpid());
   if (fill_it(maze, x, y))
     return (1);
   if (solution(maze, x, y))

@@ -5,7 +5,7 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Wed May 11 22:02:55 2016 bougon_p
-** Last update Thu May 12 15:48:24 2016 bougon_p
+** Last update Fri May 13 00:27:59 2016 bougon_p
 */
 
 #include "dante.h"
@@ -62,6 +62,7 @@ t_node		***init_graph(t_graph *graph)
   graph->root->west = NULL;
   graph->root->east = NULL;
   graph->root->south = NULL;
+  graph->root->checked = false;
   tab[0][0] = graph->root;
   return (tab);
 }

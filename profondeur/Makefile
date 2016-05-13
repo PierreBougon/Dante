@@ -5,7 +5,7 @@
 ## Login   <bougon_p@epitech.net>
 ## 
 ## Started on  Sat Apr 30 18:18:31 2016 bougon_p
-## Last update Thu May 12 15:44:00 2016 bougon_p
+## Last update Fri May 13 14:56:28 2016 bougon_p
 ##
 
 # USEFUL VARIABLES
@@ -27,6 +27,7 @@ SRC		=	$(MAIN)main.c \
 			$(MAIN)create_node.c \
 			$(MAIN)free.c \
 			$(MAIN)debug.c \
+			$(MAIN)solver.c \
 
 OBJS    	=	$(SRC:.c=.o)
 

@@ -5,7 +5,7 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Thu May 12 15:23:14 2016 bougon_p
-** Last update Thu May 12 15:24:04 2016 bougon_p
+** Last update Fri May 13 16:09:22 2016 bougon_p
 */
 
 #include "dante.h"
@@ -20,6 +20,20 @@ void	free_save(t_node ***save, t_graph *graph)
       free(save[i]);
     }
   free(save);
+}
+
+void		free_pile(t_pile *root)
+{
+  t_pile	*curr;
+  t_pile	*tmp;
+
+  curr = root;
+  while (curr)
+    {
+      tmp = curr;
+      curr = curr->next;
+      free(tmp);
+    }
 }
 
 void	free_graph(t_graph *graph)
@@ -37,6 +51,7 @@ void	free_graph(t_graph *graph)
 	    free(graph->tab[j][i]);
 	}
     }
+  free_pile(graph->road);
   free_save(graph->tab, graph);
 }
 
