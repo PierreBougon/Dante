@@ -5,7 +5,7 @@
 ** Login   <troncy_l@epitech.net>
 ** 
 ** Started on  Thu May 12 10:46:35 2016 Lucas Troncy
-** Last update Thu May 12 14:27:43 2016 Lucas Troncy
+** Last update Fri May 13 10:43:05 2016 Lucas Troncy
 */
 
 #include <stdlib.h>
@@ -44,7 +44,19 @@ int	get_rand(t_all *all, int x, int y)
 
 int	my_hunt(t_all *all)
 {
-  return (0);
+  int	a;
+  int	b;
+
+  a = -1;
+  while (++a < all->y)
+    {
+      b = -1;
+      while (++b < all->x)
+	{
+	  all_hunt(all, a, b);
+	}
+    }
+  return (1);
 }
 
 int	my_kill(t_all *all)

@@ -5,7 +5,7 @@
 ** Login   <troncy_l@epitech.net>
 ** 
 ** Started on  Thu May 12 10:37:55 2016 Lucas Troncy
-** Last update Thu May 12 13:33:51 2016 Lucas Troncy
+** Last update Fri May 13 10:45:02 2016 Lucas Troncy
 */
 
 #include <stdio.h>
@@ -34,6 +34,23 @@ int	init_data(t_all *all)
   return (0);
 }
 
+void	disp_table(t_all *all)
+{
+  int	i;
+  int	j;
+
+  i = -1;
+  while (++i < all->y)
+    {
+      j = -1;
+      while (++j < all->x)
+	{
+	  write(1, &all->table[i][j], 1);
+	}
+      write(1, "\n", 1);
+    }
+}
+
 int	main(int argc, char **argv)
 {
   t_all all;
@@ -51,5 +68,6 @@ int	main(int argc, char **argv)
     return (1);
   if (do_generation(&all))
     return (1);
+  disp_table(&all);
   return (0);
 }
