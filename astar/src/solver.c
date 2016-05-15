@@ -5,7 +5,7 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Fri May 13 00:05:57 2016 bougon_p
-** Last update Sun May 15 18:57:07 2016 bougon_p
+** Last update Mon May 16 00:15:05 2016 bougon_p
 */
 
 #include "dante.h"
@@ -62,7 +62,7 @@ int		astar_search(t_graph *graph)
     {
       curr_pile = open_pile;
       curr_pile->node->checked = true;
-      print_open(open_pile);
+      /* print_open(open_pile); */
       depop_root(&open_pile);
       /* printf("CURRENT FATHER -> POSX = %d && POSY = %d && cost = %d\n", */
       /* 	     curr_pile->node->pos.x, curr_pile->node->pos.y, curr_pile->node->cost); */

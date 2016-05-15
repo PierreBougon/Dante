@@ -5,7 +5,7 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Sat Apr 30 17:25:34 2016 bougon_p
-** Last update Sun May 15 18:55:14 2016 bougon_p
+** Last update Mon May 16 00:22:42 2016 bougon_p
 */
 
 #include <stdlib.h>
@@ -66,14 +66,24 @@ void		write_map_solved(t_graph *graph)
       while (++i < graph->width)
 	{
 	  if (graph->tab[j][i] == NULL)
-	    write(1, "X", 1);
+	    {
+	      if (write(1, "X", 1) == -1)
+		return ;
+	    }
 	  else if (graph->tab[j][i]->status == S_ROAD
 		   || graph->tab[j][i]->status == START)
-	    write(1, "O", 1);
+	    {
+	      if (write(1, "O", 1) == -1)
+		return ;
+	    }
 	  else
-	    write(1, "*", 1);
+	    {
+	      if (write(1, "*", 1) == -1)
+		return ;
+	    }
 	}
-      write(1, "\n", 1);
+      if (write(1, "\n", 1) == -1)
+	return ;
     }
 }
 
