@@ -5,7 +5,7 @@
 ** Login   <troncy_l@epitech.net>
 ** 
 ** Started on  Thu May 12 10:37:55 2016 Lucas Troncy
-** Last update Fri May 13 10:45:02 2016 Lucas Troncy
+** Last update Tue May 17 09:12:58 2016 Lucas Troncy
 */
 
 #include <stdio.h>
@@ -31,6 +31,7 @@ int	init_data(t_all *all)
       while (++j < all->x)
 	all->table[i][j] = 'X';
     }
+  all->table[0][0] = '*';
   return (0);
 }
 

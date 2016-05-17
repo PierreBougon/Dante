@@ -5,7 +5,7 @@
 ## Login   <troncy_l@epitech.net>
 ## 
 ## Started on  Fri May 13 10:45:35 2016 Lucas Troncy
-## Last update Fri May 13 10:48:48 2016 Lucas Troncy
+## Last update Fri May 13 10:51:55 2016 Lucas Troncy
 ##
 
 SRCS=	src/dir.c	\
@@ -16,7 +16,7 @@ SRCS=	src/dir.c	\
 
 OBJS=	$(SRCS:.c=.o)
 
-CFLAGS=	-Wall -W -Werror -Wextra -ansi -pedantic
+CFLAGS=	-Iinclude -Wall -W -Werror -Wextra -ansi -pedantic -g
 
 NAME=	perfect
 
