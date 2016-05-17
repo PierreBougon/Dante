@@ -5,7 +5,7 @@
 ** Login   <troncy_l@epitech.net>
 ** 
 ** Started on  Fri May 13 10:20:29 2016 Lucas Troncy
-** Last update Tue May 17 09:26:56 2016 Lucas Troncy
+** Last update Tue May 17 11:30:10 2016 Lucas Troncy
 */
 
 #include <stdio.h>
@@ -63,6 +63,7 @@ int	all_hunt(t_all *all, int a, int b)
 	 all->table[(a < all->y - 1) ? a + 1 : a][b] == '*')
 	{
 	  printf("b\n");
+	  exit(1);
 	  return (1);
 	}
       if(all->table[a][(b > 1) ? b - 2 : b] == '*')
