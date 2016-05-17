@@ -5,9 +5,10 @@
 ** Login   <troncy_l@epitech.net>
 ** 
 ** Started on  Thu May 12 10:37:55 2016 Lucas Troncy
-** Last update Tue May 17 09:12:58 2016 Lucas Troncy
+** Last update Tue May 17 13:44:10 2016 Lucas Troncy
 */
 
+#include <time.h>
 #include <stdio.h>
 #include <unistd.h>
 #include <stdlib.h>
@@ -61,6 +62,7 @@ int	main(int argc, char **argv)
       write(1, "x y\n", 4);
       return (1);
     }
+  srand(time(NULL) * getpid());
   all.x = atoi(argv[1]);
   all.y = atoi(argv[2]);
   all.hunt_x = 0;

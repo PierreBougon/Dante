@@ -5,7 +5,7 @@
 ** Login   <troncy_l@epitech.net>
 ** 
 ** Started on  Thu May 12 10:46:35 2016 Lucas Troncy
-** Last update Tue May 17 13:38:50 2016 Lucas Troncy
+** Last update Tue May 17 13:45:21 2016 Lucas Troncy
 */
 
 #include <stdlib.h>
@@ -76,25 +76,11 @@ int	my_kill(t_all *all)
   int	x;
   int	y;
   int	nb;
-  static int toto = 0;
 
   x = all->hunt_x;
   y = all->hunt_y;
-  toto++;
-  printf("laby de : %dx%d, on est a %d,%d et hunt: %d,%d\n",
-	  all->x, all->y, x, y, all->hunt_x, all->hunt_y);
-  printf("my_kill\n");
-  if (toto > 300)
-      {
-	disp_table(all);
-	exit(1);
-      }
   while (is_continuable(all, x, y))
     {
-      printf("u\n");
-      printf("laby de : %dx%d, on est a %d,%d et hunt: %d,%d\n",
-	    all->x, all->y, x, y, all->hunt_x, all->hunt_y);
-      disp_table(all);
       if ((nb = get_rand(all, &x, &y)) == -1)
 	return (1);
     }
