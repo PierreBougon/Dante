@@ -5,7 +5,7 @@
 ** Login   <troncy_l@epitech.net>
 ** 
 ** Started on  Thu May 12 10:46:35 2016 Lucas Troncy
-** Last update Tue May 17 11:31:34 2016 Lucas Troncy
+** Last update Tue May 17 13:38:50 2016 Lucas Troncy
 */
 
 #include <stdlib.h>
@@ -65,6 +65,9 @@ int	my_hunt(t_all *all)
 	    return (0);
 	}
     }
+  disp_table(all);
+  printf("END\n");
+  exit(1);
   return (1);
 }
 
@@ -81,7 +84,7 @@ int	my_kill(t_all *all)
   printf("laby de : %dx%d, on est a %d,%d et hunt: %d,%d\n",
 	  all->x, all->y, x, y, all->hunt_x, all->hunt_y);
   printf("my_kill\n");
-  if (toto > 15000)
+  if (toto > 300)
       {
 	disp_table(all);
 	exit(1);
@@ -89,6 +92,8 @@ int	my_kill(t_all *all)
   while (is_continuable(all, x, y))
     {
       printf("u\n");
+      printf("laby de : %dx%d, on est a %d,%d et hunt: %d,%d\n",
+	    all->x, all->y, x, y, all->hunt_x, all->hunt_y);
       disp_table(all);
       if ((nb = get_rand(all, &x, &y)) == -1)
 	return (1);
