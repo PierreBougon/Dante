@@ -5,7 +5,7 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Sun May 15 02:54:27 2016 bougon_p
-** Last update Sun May 15 18:56:45 2016 bougon_p
+** Last update Mon May 16 13:30:43 2016 bougon_p
 */
 
 #include "dante.h"
@@ -22,7 +22,6 @@ int	add_to_open(t_pile **open_pile, t_node *node)
   node->cost = calc_cost(node);
   if (*open_pile == NULL)
     {
-      /* printf("RECREATE PILE\n"); */
       new->next = NULL;
       new->prev = NULL;
       (*open_pile) = new;
@@ -37,7 +36,6 @@ int	add_to_open(t_pile **open_pile, t_node *node)
     }
   if (i == 0 && tmp->node->cost > new->node->cost)
     {
-      /* printf("add first\n"); */
       new->prev = NULL;
       new->next = tmp;
       tmp->prev = new;
@@ -45,14 +43,12 @@ int	add_to_open(t_pile **open_pile, t_node *node)
     }
   else if (tmp->next == NULL && tmp->node->cost <= new->node->cost)
     {
-      /* printf("add last\n"); */
       new->next = NULL;
       new->prev = tmp;
       tmp->next = new;
     }
   else
     {
-      /* printf("add miD\n"); */
       tmp = tmp->prev;
       new->next = tmp->next;
       new->prev = tmp;
@@ -68,8 +64,6 @@ void		depop_root(t_pile **open)
     {
       (*open)->next->prev = NULL;
       (*open) = (*open)->next;
-      /* (*open)->next = NULL; */
-      /* (*open)->prev = NULL; */
     }
   else
     (*open) = NULL;

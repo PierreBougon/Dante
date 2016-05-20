@@ -5,7 +5,7 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Sat Apr 30 18:15:26 2016 bougon_p
-** Last update Sun May 15 18:48:07 2016 bougon_p
+** Last update Mon May 16 13:26:19 2016 bougon_p
 */
 
 #ifndef DANTE_H_
@@ -95,6 +95,7 @@ bool		is_on_open(t_node *, t_pile *);
 int		add_to_open(t_pile **, t_node *);
 void		depop_root(t_pile **);
 int		calc_cost(t_node *);
+void		free_pile(t_pile *);
 
 void		aff_graph(t_node ***, t_graph *);
 void		aff_map(char **);
