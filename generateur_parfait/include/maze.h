@@ -5,7 +5,7 @@
 ** Login   <troncy_l@epitech.net>
 ** 
 ** Started on  Thu May 12 13:26:43 2016 Lucas Troncy
-** Last update Fri May 20 13:24:04 2016 Lucas Troncy
+** Last update Fri May 20 13:57:45 2016 Lucas Troncy
 */
 
 #ifndef MAZE_H_
@@ -15,6 +15,7 @@
 
 typedef struct		s_all
 {
+  bool			perfect;
   int			x;
   int			y;
   int			hunt_x;
