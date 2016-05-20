@@ -5,23 +5,30 @@
 ## Login   <troncy_l@epitech.net>
 ## 
 ## Started on  Fri May 13 10:45:35 2016 Lucas Troncy
-## Last update Fri May 13 10:48:48 2016 Lucas Troncy
+## Last update Fri May 20 13:56:45 2016 Lucas Troncy
 ##
+
+DEBUG=	no
 
 SRCS=	src/dir.c	\
 	src/gen.c	\
+	src/verify.c	\
 	src/hunt.c	\
 	src/main.c	\
 	src/rand_dir.c
 
 OBJS=	$(SRCS:.c=.o)
 
-CFLAGS=	-Wall -W -Werror -Wextra -ansi -pedantic
+ifeq ($(DEBUG), yes)
+CFLAGS=	-Iinclude -Wall -W -Werror -Wextra -ansi -pedantic -g -pg
+else
+CFLAGS=	-Iinclude -Wall -W -Werror -Wextra -ansi -pedantic
+endif
 
 NAME=	perfect
 
 $(NAME): $(OBJS)
-	 gcc $(OBJS) -o $(NAME)
+	 gcc $(OBJS) -o $(NAME) $(CFLAGS)
 
 all: $(NAME)
 

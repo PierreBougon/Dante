@@ -5,26 +5,29 @@
 ** Login   <troncy_l@epitech.net>
 ** 
 ** Started on  Thu May 12 13:54:56 2016 Lucas Troncy
-** Last update Fri May 13 10:11:40 2016 Lucas Troncy
+** Last update Tue May 17 13:45:48 2016 Lucas Troncy
 */
 
+#include <stdio.h>
 #include <stdbool.h>
 #include "maze.h"
 
 bool	is_continuable(t_all *all, int x, int y)
 {
-  if (all->table[y][x - 2] == 'X' || all->table[y][x + 2] == 'X' ||
-      all->table[y - 2][x] == 'X' || all->table[y + 2][x] == 'X')
+  if (all->table[y][(x > 1) ? x - 2 : x] == 'X' ||
+      all->table[y][(x < all->x - 1) ? x + 2 : x] == 'X' ||
+      all->table[(y > 1) ? y - 2 : y][x] == 'X' ||
+      all->table[(y < all->y - 2) ? y + 2 : y][x] == 'X')
     return (true);
   return (false);
 }
 
 int	check_up(t_all *all, int *x, int *y)
 {
-  if (all->table[*y - 2][*x] == 'X')
+  if (all->table[(*y > 1) ? *y - 2 : *y][*x] == 'X')
     {
-      all->table[*y - 1][*x] = '*';
-      all->table[*y - 2][*x] = '*';
+      all->table[(*y > 0) ? *y - 1 : *y][*x] = '*';
+      all->table[(*y > 1) ? *y - 2 : *y][*x] = '*';
       *y = *y - 2;
       return (0);
     }
@@ -33,10 +36,10 @@ int	check_up(t_all *all, int *x, int *y)
 
 int	check_down(t_all *all, int *x, int *y)
 {
-  if (all->table[*y + 2][*x] == 'X')
+  if (all->table[(*y < all->y - 2) ? *y + 2 : *y][*x] == 'X')
     {
-      all->table[*y + 1][*x] = '*';
-      all->table[*y + 2][*x] = '*';
+      all->table[(*y < all->y) ? *y + 1 : *y][*x] = '*';
+      all->table[(*y < all->y - 2) ? *y + 2 : *y][*x] = '*';
       *y = *y + 2;
       return (0);
     }
@@ -45,10 +48,10 @@ int	check_down(t_all *all, int *x, int *y)
 
 int	check_left(t_all *all, int *x, int *y)
 {
-  if (all->table[*y][*x - 2] == 'X')
+  if (all->table[*y][(*x > 1) ? *x - 2 : *x] == 'X')
     {
-      all->table[*y][*x - 1] = '*';
-      all->table[*y][*x - 2] = '*';
+      all->table[*y][(*x > 0) ? *x - 1 : *x] = '*';
+      all->table[*y][(*x > 1) ? *x - 2 : *x] = '*';
       *x = *x - 2;
       return (0);
     }
@@ -57,10 +60,10 @@ int	check_left(t_all *all, int *x, int *y)
 
 int	check_right(t_all *all, int *x, int *y)
 {
-  if (all->table[*y][*x + 2] == 'X')
+  if (all->table[*y][(*x < all->x - 1) ? *x + 2 : *x] == 'X')
     {
-      all->table[*y][*x + 1] = '*';
-      all->table[*y][*x + 2] = '*';
+      all->table[*y][(*x < all->x) ? *x + 1 : *x] = '*';
+      all->table[*y][(*x < all->x - 1) ? *x + 2 : *x] = '*';
       *x = *x + 2;
       return (0);
     }

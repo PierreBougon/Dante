@@ -5,9 +5,11 @@
 ** Login   <troncy_l@epitech.net>
 ** 
 ** Started on  Thu May 12 10:37:55 2016 Lucas Troncy
-** Last update Fri May 13 10:45:02 2016 Lucas Troncy
+** Last update Fri May 20 14:06:48 2016 Lucas Troncy
 */
 
+#include <time.h>
+#include <string.h>
 #include <stdio.h>
 #include <unistd.h>
 #include <stdlib.h>
@@ -31,6 +33,7 @@ int	init_data(t_all *all)
       while (++j < all->x)
 	all->table[i][j] = 'X';
     }
+  all->table[0][0] = '*';
   return (0);
 }
 
@@ -60,6 +63,11 @@ int	main(int argc, char **argv)
       write(1, "x y\n", 4);
       return (1);
     }
+  all.perfect = false;
+  if (argc == 4)
+    if (strncmp(argv[3], "parfait", 7) == 0)
+      all.perfect = true;
+  srand(time(NULL) * getpid());
   all.x = atoi(argv[1]);
   all.y = atoi(argv[2]);
   all.hunt_x = 0;

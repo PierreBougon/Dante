@@ -5,7 +5,7 @@
 ** Login   <troncy_l@epitech.net>
 ** 
 ** Started on  Thu May 12 13:26:43 2016 Lucas Troncy
-** Last update Fri May 13 10:42:42 2016 Lucas Troncy
+** Last update Fri May 20 13:57:45 2016 Lucas Troncy
 */
 
 #ifndef MAZE_H_
@@ -15,6 +15,7 @@
 
 typedef struct		s_all
 {
+  bool			perfect;
   int			x;
   int			y;
   int			hunt_x;
@@ -22,6 +23,7 @@ typedef struct		s_all
   char			**table;
 }			t_all;
 
+int			verify(t_all *);
 int			do_generation(t_all *);
 void			rand_tab(int *, int, int);
 int			check_up(t_all *all, int *, int *);
