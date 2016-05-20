@@ -5,7 +5,7 @@
 ** Login   <troncy_l@epitech.net>
 ** 
 ** Started on  Thu May 12 10:46:35 2016 Lucas Troncy
-** Last update Tue May 17 13:45:21 2016 Lucas Troncy
+** Last update Fri May 20 13:54:16 2016 Lucas Troncy
 */
 
 #include <stdlib.h>
@@ -15,17 +15,22 @@
 
 void	disp_table(t_all *);
 
-int	get_rand(t_all *all, int *x, int *y)
-{
-  int	dir[4];
-  int	nb;
 
+void	init_dir(int *dir, int *nb)
+{
   dir[0] = 0;
   dir[1] = 1;
   dir[2] = 2;
   dir[3] = 3;
   rand_tab(dir, rand() % 4, rand() % 4);
-  nb = -1;
+  *nb = -1;
+}
+
+int	get_rand(t_all *all, int *x, int *y, int nb)
+{
+  int	dir[4];
+
+  init_dir(dir, &nb);
   while (++nb < 4)
     {
       if (dir[nb] == 0)
@@ -56,18 +61,17 @@ int	my_hunt(t_all *all)
   int	b;
 
   a = -1;
+  /*a = all->hunt_y;*/
   while (++a < all->y)
     {
       b = -1;
+      /*b = all->hunt_x;*/
       while (++b < all->x)
 	{
 	  if (!all_hunt(all, a, b))
 	    return (0);
 	}
     }
-  disp_table(all);
-  printf("END\n");
-  exit(1);
   return (1);
 }
 
@@ -81,7 +85,7 @@ int	my_kill(t_all *all)
   y = all->hunt_y;
   while (is_continuable(all, x, y))
     {
-      if ((nb = get_rand(all, &x, &y)) == -1)
+      if ((nb = get_rand(all, &x, &y, 0)) == -1)
 	return (1);
     }
   return (0);
@@ -92,5 +96,7 @@ int	do_generation(t_all *all)
   while (!my_hunt(all))
     if (my_kill(all))
       return (1);
+  if (verify(all))
+    return (1);
   return (0);
 }
