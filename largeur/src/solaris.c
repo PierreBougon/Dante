@@ -5,7 +5,7 @@
 ** Login   <troncy_l@epitech.net>
 ** 
 ** Started on  Sat May 21 12:35:06 2016 Lucas Troncy
-** Last update Sat May 21 12:35:33 2016 Lucas Troncy
+** Last update Sat May 21 13:13:23 2016 Lucas Troncy
 */
 
 #include <stdbool.h>
@@ -19,5 +19,6 @@ void	solaris(t_node *end, bool *good)
       end->sol = true;
       end = end->father;
     }
+  end->sol = true;
 }
 

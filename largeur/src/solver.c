@@ -5,7 +5,7 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Fri May 13 00:05:57 2016 bougon_p
-** Last update Sat May 21 12:36:44 2016 Lucas Troncy
+** Last update Sat May 21 13:24:48 2016 Lucas Troncy
 */
 
 #include <stdio.h>
@@ -28,6 +28,8 @@ int	add_to_file(t_file **root, t_node *node, bool *good)
   t_file	*new;
   t_file	*tmp;
 
+  if (node->checked)
+    return (0);
   if (!(new = malloc(sizeof(t_file))))
     return (1);
   tmp = (*root);
