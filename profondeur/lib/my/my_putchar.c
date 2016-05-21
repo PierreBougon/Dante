@@ -5,12 +5,13 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Tue Oct  6 16:13:25 2015 Pierre Bougon
-** Last update Mon Mar 28 12:20:44 2016 bougon_p
+** Last update Mon May 16 00:21:52 2016 bougon_p
 */
 
 #include "my.h"
 
 void	my_putchar(char c)
 {
-  write(1, &c, 1);
+  if (write(1, &c, 1) == -1)
+    return ;
 }

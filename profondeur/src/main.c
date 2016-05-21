@@ -5,7 +5,7 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Sat Apr 30 17:25:34 2016 bougon_p
-** Last update Sat May 21 04:38:24 2016 bougon_p
+** Last update Sat May 21 20:28:02 2016 bougon_p
 */
 
 #include <stdlib.h>
@@ -30,11 +30,11 @@ char	**parse_map(int fd, t_graph *graph)
 	return (puterr(MALLOC_ERR), NULL);
       tab[i++] = line;
       if (size == -1)
-	size = my_strlen(tab[0]);
-      if (my_strlen(tab[i - 1]) != size)
+	size = strlen(tab[0]);
+      if (strlen(tab[i - 1]) != size)
 	return (puterr(PARS_ERR), NULL);
     }
-  graph->width = my_strlen(tab[0]);
+  graph->width = strlen(tab[0]);
   graph->height = i;
   close(fd);
   return (tab);
@@ -68,16 +68,22 @@ void		write_map_solved(t_graph *graph)
       while (++i < graph->width)
 	{
 	  if (graph->tab[j][i] == NULL)
-	    write(1, "X", 1);
+	    {
+	      if (write(1, "X", 1) == -1)
+		return ;
+	    }
 	  else if (curr_pile != NULL && check_pile(graph, i, j))
 	    {
-	      write(1, "O", 1);
+	      if (write(1, "O", 1) == -1)
+		return ;
 	      curr_pile = curr_pile->next;
 	    }
 	  else
-	    write(1, "*", 1);
+	    if (write(1, "*", 1) == -1)
+	      return ;
 	}
-      write(1, "\n", 1);
+      if (write(1, "\n", 1) == -1)
+	return ;
     }
 }
 
@@ -109,17 +115,9 @@ int		main(int ac, char **av)
     return (1);
   if (!create_graph(map, &graph))
     return (1);
-
-  /*
-  ** DEBUG
-  */
-  /* aff_map(map); */
-  /* aff_graph(graph.tab, &graph); */
-
   free_map(map);
   if (depth_first_search(&graph) != 0)
     return (1);
-  /* aff_pile(&graph); */
   write_map_solved(&graph);
   free_graph(&graph);
   return (0);
