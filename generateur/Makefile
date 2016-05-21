@@ -1,32 +1,41 @@
 ##
-## Makefile for Makefile in /home/lokoum/prog/dante/generateur
+## Makefile for Makfile in /home/lokoum/prog/dante/generateur_parfait
 ## 
 ## Made by Lucas Troncy
 ## Login   <troncy_l@epitech.net>
 ## 
-## Started on  Sat Apr 30 17:19:45 2016 Lucas Troncy
-## Last update Thu May 05 09:51:28 2016 Lucas Troncy
+## Started on  Fri May 13 10:45:35 2016 Lucas Troncy
+## Last update Sat May 21 20:46:09 2016 bougon_p
 ##
 
-SRCS	=	src/main.c	\
-		src/maze.c	\
-		src/utils.c
+DEBUG=	no
 
-OBJS	=	$(SRCS:.c=.o)
+SRCS=	src/dir.c	\
+	src/gen.c	\
+	src/verify.c	\
+	src/hunt.c	\
+	src/main.c	\
+	src/rand_dir.c
 
-NAME	=	generateur
+OBJS=	$(SRCS:.c=.o)
 
-CFLAGS	=	-Wall -ansi -pedantic -Werror
+ifeq ($(DEBUG), yes)
+CFLAGS=	-Iinclude -Wall -W -Werror -Wextra -ansi -pedantic -g -pg
+else
+CFLAGS=	-Iinclude -Wall -W -Werror -Wextra -ansi -pedantic -O2
+endif
 
-$(NAME):	$(OBJS)
-		gcc $(OBJS) -o $(NAME)
+NAME=	generateur
 
-all:		$(NAME)
+$(NAME): $(OBJS)
+	 gcc $(OBJS) -o $(NAME) $(CFLAGS)
+
+all: $(NAME)
 
 clean:
-		rm -f $(OBJS)
+	rm -f $(OBJS)
 
-fclean:		clean
-		rm -f $(NAME)
+fclean: clean
+	rm -f $(NAME)
 
-re:		fclean all
+re: fclean all

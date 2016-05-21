@@ -5,12 +5,12 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Fri May 13 00:05:57 2016 bougon_p
-** Last update Fri May 13 16:56:25 2016 bougon_p
+** Last update Sat May 21 21:03:43 2016 bougon_p
 */
 
 #include "dante.h"
 
-t_pile		*init_pile()
+t_pile		*init_pile(t_graph *graph)
 {
   t_pile	*new;
 
@@ -18,6 +18,7 @@ t_pile		*init_pile()
     return (NULL);
   new->next = NULL;
   new->prev = NULL;
+  new->node = graph->root;
   return (new);
 }
 
@@ -81,9 +82,8 @@ int		depth_first_search(t_graph *graph)
   int		ret;
 
   back = false;
-  if (!(root_pile = init_pile()))
+  if (!(root_pile = init_pile(graph)))
     return (1);
-  root_pile->node = graph->root;
   curr_pile = root_pile;
   graph->road = root_pile;
   while (curr_pile)

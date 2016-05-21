@@ -1,11 +1,11 @@
 ##
-## Makefile for make in /home/bougon_p/rendu/dante/profondeur
+## Makefile for astar in /home/bougon_p/rendu/dante/astar
 ## 
 ## Made by bougon_p
 ## Login   <bougon_p@epitech.net>
 ## 
-## Started on  Sat Apr 30 18:18:31 2016 bougon_p
-## Last update Sat May 21 12:36:00 2016 Lucas Troncy
+## Started on  Sat May 14 17:39:55 2016 bougon_p
+## Last update Mon May 16 00:17:55 2016 bougon_p
 ##
 
 # USEFUL VARIABLES
@@ -18,17 +18,18 @@ WHITE	=	\033[0m
 
 ECHO	=	echo -e
 
-# PROJECT VARIABLES
+# SOURCES VARIABLES
 
 MAIN		=	src/
 
 SRC		=	$(MAIN)main.c \
 			$(MAIN)create_graph.c \
 			$(MAIN)create_node.c \
-			$(MAIN)solaris.c \
 			$(MAIN)free.c \
 			$(MAIN)debug.c \
 			$(MAIN)solver.c \
+			$(MAIN)check_sons.c \
+			$(MAIN)open_list.c \
 
 OBJS    	=	$(SRC:.c=.o)
 
@@ -39,7 +40,7 @@ NAME	=	solver
 
 IFLAG	=	-Iinclude/
 
-CFLAGS  =	-W -Wall -Wextra -g
+CFLAGS  =	-W -Wall -Wextra -O2
 
 CC      =	gcc $(CFLAGS) $(IFLAG)
 

@@ -5,7 +5,7 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Sat Apr 30 17:25:34 2016 bougon_p
-** Last update Sat May 21 21:11:12 2016 bougon_p
+** Last update Mon May 16 13:06:08 2016 bougon_p
 */
 
 #include <stdlib.h>
@@ -30,11 +30,11 @@ char	**parse_map(int fd, t_graph *graph)
 	return (puterr(MALLOC_ERR), NULL);
       tab[i++] = line;
       if (size == -1)
-	size = strlen(tab[0]);
-      if (strlen(tab[i - 1]) != (unsigned)size)
+	size = my_strlen(tab[0]);
+      if (my_strlen(tab[i - 1]) != size)
 	return (puterr(PARS_ERR), NULL);
     }
-  graph->width = strlen(tab[0]);
+  graph->width = my_strlen(tab[0]);
   graph->height = i;
   close(fd);
   return (tab);
@@ -54,41 +54,62 @@ bool		check_pile(t_graph *graph, int i, int j)
   return (false);
 }
 
-void	aff_case(t_pile *curr_pile, t_graph *graph, int i, int j)
-{
-  if (graph->tab[j][i] == NULL)
-    {
-      if (write(1, "X", 1) == -1)
-	return ;
-    }
-  else if (curr_pile != NULL && check_pile(graph, i, j))
-    {
-      if (write(1, "o", 1) == -1)
-	return ;
-      curr_pile = curr_pile->next;
-    }
-  else
-    if (write(1, "*", 1) == -1)
-      return ;
-}
-
 void		write_map_solved(t_graph *graph)
 {
   int		i;
   int		j;
-  t_pile	*curr_pile;
 
   j = -1;
-  curr_pile = graph->road;
   while (++j < graph->height)
     {
       i = -1;
       while (++i < graph->width)
 	{
-	  aff_case(curr_pile, graph, i, j);
+	  if (graph->tab[j][i] == NULL)
+	    {
+	      if (write(1, "X", 1) == -1)
+		return ;
+	    }
+	  else if (graph->tab[j][i]->status == S_ROAD
+		   || graph->tab[j][i]->status == START)
+	    {
+	      if (write(1, "O", 1) == -1)
+		return ;
+	    }
+	  else
+	    {
+	      if (write(1, "*", 1) == -1)
+		return ;
+	    }
 	}
       if (write(1, "\n", 1) == -1)
 	return ;
+    }
+}
+
+void		aff_pile(t_graph *graph)
+{
+  t_pile	*curr;
+  int		i;
+
+  curr = graph->road;
+  i = 0;
+  while (curr->node->status != END)
+    {
+      printf("%d \n", i++);
+      curr = curr->next;
+    }
+}
+
+void		mark_road(t_graph *graph)
+{
+  t_node	*node;
+
+  node = graph->tab[graph->height - 1][graph->width - 1];
+  while (node->status != START)
+    {
+      node->status = S_ROAD;
+      node = node->father;
     }
 }
 
@@ -106,9 +127,18 @@ int		main(int ac, char **av)
     return (1);
   if (!create_graph(map, &graph))
     return (1);
+
+  /*
+  ** DEBUG
+  */
+  /* aff_map(map); */
+  /* aff_graph(graph.tab, &graph); */
+
   free_map(map);
-  if (depth_first_search(&graph) != 0)
+  if (astar_search(&graph) != 0)
     return (1);
+  mark_road(&graph);
+  /* aff_pile(&graph); */
   write_map_solved(&graph);
   free_graph(&graph);
   return (0);
