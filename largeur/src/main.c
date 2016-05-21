@@ -5,7 +5,7 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Sat Apr 30 17:25:34 2016 bougon_p
-** Last update Fri May 20 15:15:48 2016 Lucas Troncy
+** Last update Sat May 21 12:33:35 2016 Lucas Troncy
 */
 
 #include <stdlib.h>
@@ -40,9 +40,9 @@ char	**parse_map(int fd, t_graph *graph)
   return (tab);
 }
 
-bool		check_pile(t_graph *graph, int i, int j)
+bool		check_file(t_graph *graph, int i, int j)
 {
-  t_pile	*curr;
+  t_file	*curr;
 
   curr = graph->road;
   while (curr)
@@ -58,10 +58,8 @@ void		write_map_solved(t_graph *graph)
 {
   int		i;
   int		j;
-  t_pile	*curr_pile;
 
   j = -1;
-  curr_pile = graph->road;
   while (++j < graph->height)
     {
       i = -1;
@@ -69,10 +67,9 @@ void		write_map_solved(t_graph *graph)
 	{
 	  if (graph->tab[j][i] == NULL)
 	    write(1, "X", 1);
-	  else if (curr_pile != NULL && check_pile(graph, i, j))
+	  else if (graph->tab[j][i]->sol)
 	    {
 	      write(1, "O", 1);
-	      curr_pile = curr_pile->next;
 	    }
 	  else
 	    write(1, "*", 1);
@@ -81,9 +78,9 @@ void		write_map_solved(t_graph *graph)
     }
 }
 
-void		aff_pile(t_graph *graph)
+void		aff_file(t_graph *graph)
 {
-  t_pile	*curr;
+  t_file	*curr;
   int		i;
 
   curr = graph->road;
@@ -113,14 +110,11 @@ int		main(int ac, char **av)
   /*
   ** DEBUG
   */
-  /* aff_map(map); */
-  /* aff_graph(graph.tab, &graph); */
-
   free_map(map);
-  if (depth_first_search(&graph) != 0)
+  if (breadth_first_search(&graph) != 0)
     return (1);
-  /* aff_pile(&graph); */
+  /* aff_file(&graph); */
   write_map_solved(&graph);
-  free_graph(&graph);
+  /*free_graph(&graph);*/
   return (0);
 }
