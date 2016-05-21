@@ -1,18 +1,17 @@
 /*
-** get_next_line.h for gnl
+** get_next_line.h for gnl in /home/bougon_p/rendu/dante/profondeur
 **
-** Made by marc brout
-** Login   <brout_m@epitech.net>
+** Made by bougon_p
+** Login   <bougon_p@epitech.net>
 **
-** Started on  Mon Jan  4 10:37:28 2016 marc brout
-** Last update Mon May  9 13:33:00 2016 bougon_p
+** Started on  Fri May 20 19:46:02 2016 bougon_p
+** Last update Fri May 20 19:46:03 2016 bougon_p
 */
 
 #ifndef GET_NEXT_LINE_H_
 # define GET_NEXT_LINE_H_
 # include <stdlib.h>
 # include <unistd.h>
-# include "lapin.h"
 # ifndef READ_SIZE
 #  define READ_SIZE (4096)
 # endif /* !READ_SIZE_H_ */

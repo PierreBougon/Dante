@@ -5,7 +5,7 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Sat Apr 30 17:25:34 2016 bougon_p
-** Last update Mon May 16 00:22:42 2016 bougon_p
+** Last update Mon May 16 13:06:08 2016 bougon_p
 */
 
 #include <stdlib.h>
@@ -140,6 +140,6 @@ int		main(int ac, char **av)
   mark_road(&graph);
   /* aff_pile(&graph); */
   write_map_solved(&graph);
-  /* free_graph(&graph); */
+  free_graph(&graph);
   return (0);
 }
