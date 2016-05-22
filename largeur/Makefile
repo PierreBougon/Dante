@@ -5,7 +5,7 @@
 ## Login   <bougon_p@epitech.net>
 ## 
 ## Started on  Sat Apr 30 18:18:31 2016 bougon_p
-## Last update Sat May 21 12:36:00 2016 Lucas Troncy
+## Last update Sun May 22 22:37:58 2016 Lucas Troncy
 ##
 
 # USEFUL VARIABLES
@@ -39,7 +39,7 @@ NAME	=	solver
 
 IFLAG	=	-Iinclude/
 
-CFLAGS  =	-W -Wall -Wextra -g
+CFLAGS  =	-W -Wall -Wextra
 
 CC      =	gcc $(CFLAGS) $(IFLAG)
 
