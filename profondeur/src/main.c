@@ -5,7 +5,7 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Sat Apr 30 17:25:34 2016 bougon_p
-** Last update Sat May 21 21:11:12 2016 bougon_p
+** Last update Fri May 27 15:00:10 2016 bougon_p
 */
 
 #include <stdlib.h>
@@ -87,7 +87,7 @@ void		write_map_solved(t_graph *graph)
 	{
 	  aff_case(curr_pile, graph, i, j);
 	}
-      if (write(1, "\n", 1) == -1)
+      if (j != graph->height && write(1, "\n", 1) == -1)
 	return ;
     }
 }

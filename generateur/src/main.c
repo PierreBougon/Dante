@@ -5,7 +5,7 @@
 ** Login   <troncy_l@epitech.net>
 **
 ** Started on  Thu May 12 10:37:55 2016 Lucas Troncy
-** Last update Sat May 21 20:48:16 2016 bougon_p
+** Last update Fri May 27 13:57:09 2016 bougon_p
 */
 
 #include <time.h>
@@ -51,8 +51,8 @@ void	disp_table(t_all *all)
 	  if (write(1, &all->table[i][j], 1) == -1)
 	    return ;
 	}
-      if (write(1, "\n", 1) == -1)
-	return ;
+      if (i != all->y - 1 && write(1, "\n", 1) == -1)
+      	return ;
     }
 }
 

@@ -5,7 +5,7 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Sat Apr 30 17:25:34 2016 bougon_p
-** Last update Sat May 21 21:20:36 2016 bougon_p
+** Last update Fri May 27 15:05:49 2016 bougon_p
 */
 
 #include <stdlib.h>
@@ -50,7 +50,7 @@ void	aff_case(t_graph *graph, int j, int i)
   else if (graph->tab[j][i]->status == S_ROAD
 	   || graph->tab[j][i]->status == START)
     {
-      if (write(1, "O", 1) == -1)
+      if (write(1, "0", 1) == -1)
 	return ;
     }
   else
@@ -73,7 +73,7 @@ void		write_map_solved(t_graph *graph)
 	{
 	  aff_case(graph, j, i);
 	}
-      if (write(1, "\n", 1) == -1)
+      if (j != graph->height - 1 && write(1, "\n", 1) == -1)
 	return ;
     }
 }

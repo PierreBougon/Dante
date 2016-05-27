@@ -5,13 +5,14 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Mon Mar 28 12:07:26 2016 bougon_p
-** Last update Mon Mar 28 12:20:55 2016 bougon_p
+** Last update Fri May 27 15:18:45 2016 bougon_p
 */
 
 #include "my.h"
 
 int	my_putstr(char *str)
 {
-  write(1, str, my_strlen(str));
+  if (write(1, str, my_strlen(str)) == -1)
+    return (1);
   return (0);
 }

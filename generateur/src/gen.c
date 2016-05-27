@@ -1,11 +1,11 @@
 /*
 ** gen.c for gen func in /home/lokoum/prog/dante/generateur_parfait/src
-** 
+**
 ** Made by Lucas Troncy
 ** Login   <troncy_l@epitech.net>
-** 
+**
 ** Started on  Thu May 12 10:46:35 2016 Lucas Troncy
-** Last update Sun May 22 16:59:01 2016 Lucas Troncy
+** Last update Fri May 27 12:51:06 2016 bougon_p
 */
 
 #include <stdlib.h>
@@ -57,10 +57,11 @@ int	get_rand(t_all *all, int *x, int *y, int nb)
 
 int		my_hunt(t_all *all)
 {
-  static int	a = -1;
+  int		a;
   int		b;
 
   /*a = all->hunt_y;*/
+  a = -1;
   while (++a < all->y)
     {
       b = -1;

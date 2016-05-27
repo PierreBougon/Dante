@@ -5,7 +5,7 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Sat Apr 30 17:25:34 2016 bougon_p
-** Last update Sat May 21 12:33:35 2016 Lucas Troncy
+** Last update Fri May 27 15:40:38 2016 bougon_p
 */
 
 #include <stdlib.h>
@@ -65,30 +65,18 @@ void		write_map_solved(t_graph *graph)
       i = -1;
       while (++i < graph->width)
 	{
-	  if (graph->tab[j][i] == NULL)
-	    write(1, "X", 1);
+	  if (graph->tab[j][i] == NULL && write(1, "X", 1) == -1)
+	    return ;
 	  else if (graph->tab[j][i]->sol)
 	    {
-	      write(1, "O", 1);
+	      if (write(1, "o", 1) == -1)
+		return ;
 	    }
-	  else
-	    write(1, "*", 1);
+	  else if (write(1, "*", 1) == -1)
+	    return ;
 	}
-      write(1, "\n", 1);
-    }
-}
-
-void		aff_file(t_graph *graph)
-{
-  t_file	*curr;
-  int		i;
-
-  curr = graph->road;
-  i = 0;
-  while (curr->node->status != END)
-    {
-      printf("%d \n", i++);
-      curr = curr->next;
+      if (j != graph->height - 1 && write(1, "\n", 1) == -1)
+	return ;
     }
 }
 
@@ -106,15 +94,9 @@ int		main(int ac, char **av)
     return (1);
   if (!create_graph(map, &graph))
     return (1);
-
-  /*
-  ** DEBUG
-  */
   free_map(map);
   if (breadth_first_search(&graph) != 0)
     return (1);
-  /* aff_file(&graph); */
   write_map_solved(&graph);
-  /*free_graph(&graph);*/
   return (0);
 }

@@ -5,7 +5,7 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Wed May 11 22:02:04 2016 bougon_p
-** Last update Sat May 21 12:21:37 2016 Lucas Troncy
+** Last update Fri May 27 15:15:32 2016 bougon_p
 */
 
 #include "dante.h"
@@ -79,20 +79,18 @@ t_node		*create_new_node(t_node ***save, t_pos *pos)
   new->status = BASIC;
   new->pos.x = pos->x;
   new->pos.y = pos->y;
+  new->north = NULL;
+  new->west = NULL;
   if (pos->x > 0 && save[pos->y][pos->x - 1] != NULL)
     {
       new->west = save[pos->y][pos->x - 1];
       new->west->east = new;
     }
-  else
-    new->west = NULL;
   if (pos->y > 0 && save[pos->y - 1][pos->x] != NULL)
     {
       new->north = save[pos->y - 1][pos->x];
       new->north->south = new;
     }
-  else
-    new->north = NULL;
   new->east = NULL;
   new->south = NULL;
   new->checked = false;
