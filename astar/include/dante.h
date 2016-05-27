@@ -5,7 +5,7 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Sat Apr 30 18:15:26 2016 bougon_p
-** Last update Mon May 16 13:26:19 2016 bougon_p
+** Last update Fri May 27 16:46:32 2016 bougon_p
 */
 
 #ifndef DANTE_H_
@@ -29,7 +29,7 @@
 
 # define WALL 'X'
 # define EMPTY '*'
-# define ROAD 'O'
+# define ROAD 'o'
 
 typedef	enum		e_satus
   {

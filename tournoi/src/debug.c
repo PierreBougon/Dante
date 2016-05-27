@@ -5,11 +5,46 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Thu May 12 15:24:48 2016 bougon_p
-** Last update Thu May 12 15:25:30 2016 bougon_p
+** Last update Sat May 21 21:05:09 2016 bougon_p
 */
 
 #include "dante.h"
 #include <stdio.h>
+
+void		aff_pile(t_graph *graph)
+{
+  t_pile        *curr;
+  int           i;
+
+  curr = graph->road;
+  i = 0;
+  while (curr->node->status != END)
+    {
+      printf("%d \n", i++);
+      curr = curr->next;
+    }
+}
+
+void	aff_node(t_node *curr)
+{
+  if (curr->north)
+    printf(" |N");
+  else
+    printf("   ");
+  if (curr->west)
+    printf(" -W");
+  else
+    printf("   ");
+  if (curr->east)
+    printf(" -E");
+  else
+    printf("   ");
+  if (curr->south)
+    printf(" |S");
+  else
+    printf("   ");
+  printf("  NODE");
+}
 
 void		aff_graph(t_node ***save, t_graph *graph)
 {
@@ -27,25 +62,7 @@ void		aff_graph(t_node ***save, t_graph *graph)
 	  if (curr == NULL)
 	    printf("              NULL");
 	  else
-	    {
-	      if (curr->north)
-		printf(" |N");
-	      else
-		printf("   ");
-	      if (curr->west)
-		printf(" -W");
-	      else
-		printf("   ");
-	      if (curr->east)
-		printf(" -E");
-	      else
-		printf("   ");
-	      if (curr->south)
-		printf(" |S");
-	      else
-		printf("   ");
-	      printf("  NODE");
-	    }
+	    aff_node(curr);
 	}
       printf("\n");
     }

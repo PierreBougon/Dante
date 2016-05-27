@@ -5,7 +5,7 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Sat Apr 30 17:25:34 2016 bougon_p
-** Last update Fri May 27 15:40:38 2016 bougon_p
+** Last update Fri May 27 16:16:04 2016 bougon_p
 */
 
 #include <stdlib.h>
@@ -65,12 +65,15 @@ void		write_map_solved(t_graph *graph)
       i = -1;
       while (++i < graph->width)
 	{
-	  if (graph->tab[j][i] == NULL && write(1, "X", 1) == -1)
-	    return ;
+	  if (graph->tab[j][i] == NULL)
+	    {
+	      if (write(1, "X", 1) == -1)
+		return ;
+	    }
 	  else if (graph->tab[j][i]->sol)
 	    {
 	      if (write(1, "o", 1) == -1)
-		return ;
+	  	return ;
 	    }
 	  else if (write(1, "*", 1) == -1)
 	    return ;

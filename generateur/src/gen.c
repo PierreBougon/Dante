@@ -5,7 +5,7 @@
 ** Login   <troncy_l@epitech.net>
 **
 ** Started on  Thu May 12 10:46:35 2016 Lucas Troncy
-** Last update Fri May 27 12:51:06 2016 bougon_p
+** Last update Fri May 27 19:23:08 2016 bougon_p
 */
 
 #include <stdlib.h>
@@ -14,7 +14,6 @@
 #include "maze.h"
 
 void	disp_table(t_all *);
-
 
 void	init_dir(int *dir, int *nb)
 {
@@ -60,12 +59,10 @@ int		my_hunt(t_all *all)
   int		a;
   int		b;
 
-  /*a = all->hunt_y;*/
   a = -1;
   while (++a < all->y)
     {
       b = -1;
-      /*b = all->hunt_x;*/
       while (++b < all->x)
 	{
 	  if (!all_hunt(all, a, b))

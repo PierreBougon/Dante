@@ -5,7 +5,7 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Mon Jan  4 10:37:28 2016 marc brout
-** Last update Sat May 21 12:51:10 2016 Lucas Troncy
+** Last update Sat May 21 12:50:56 2016 Lucas Troncy
 */
 
 #ifndef GET_NEXT_LINE_H_

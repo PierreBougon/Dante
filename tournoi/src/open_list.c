@@ -5,10 +5,36 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Sun May 15 02:54:27 2016 bougon_p
-** Last update Mon May 16 13:30:43 2016 bougon_p
+** Last update Sat May 21 21:17:00 2016 bougon_p
 */
 
 #include "dante.h"
+
+void	add_sorted(int i, t_pile *tmp, t_pile *new,
+		   t_pile **open_pile)
+{
+  if (i == 0 && tmp->node->cost > new->node->cost)
+    {
+      new->prev = NULL;
+      new->next = tmp;
+      tmp->prev = new;
+      (*open_pile) = new;
+    }
+  else if (tmp->next == NULL && tmp->node->cost <= new->node->cost)
+    {
+      new->next = NULL;
+      new->prev = tmp;
+      tmp->next = new;
+    }
+  else
+    {
+      tmp = tmp->prev;
+      new->next = tmp->next;
+      new->prev = tmp;
+      tmp->next->prev = new;
+      tmp->next = new;
+    }
+}
 
 int	add_to_open(t_pile **open_pile, t_node *node)
 {
@@ -34,27 +60,7 @@ int	add_to_open(t_pile **open_pile, t_node *node)
       tmp = tmp->next;
       i++;
     }
-  if (i == 0 && tmp->node->cost > new->node->cost)
-    {
-      new->prev = NULL;
-      new->next = tmp;
-      tmp->prev = new;
-      (*open_pile) = new;
-    }
-  else if (tmp->next == NULL && tmp->node->cost <= new->node->cost)
-    {
-      new->next = NULL;
-      new->prev = tmp;
-      tmp->next = new;
-    }
-  else
-    {
-      tmp = tmp->prev;
-      new->next = tmp->next;
-      new->prev = tmp;
-      tmp->next->prev = new;
-      tmp->next = new;
-    }
+  add_sorted(i, tmp, new, open_pile);
   return (0);
 }
 

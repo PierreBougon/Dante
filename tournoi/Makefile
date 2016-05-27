@@ -1,11 +1,11 @@
 ##
-## Makefile for astar in /home/bougon_p/rendu/dante/astar
+## Makefile for make in /home/bougon_p/rendu/dante/tournoi
 ## 
 ## Made by bougon_p
 ## Login   <bougon_p@epitech.net>
 ## 
-## Started on  Sat May 14 17:39:55 2016 bougon_p
-## Last update Mon May 16 00:17:55 2016 bougon_p
+## Started on  Fri May 27 16:32:27 2016 bougon_p
+## Last update Fri May 27 16:32:37 2016 bougon_p
 ##
 
 # USEFUL VARIABLES
