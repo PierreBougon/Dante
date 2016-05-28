@@ -5,7 +5,7 @@
 ** Login   <troncy_l@epitech.net>
 **
 ** Started on  Thu May 12 10:37:55 2016 Lucas Troncy
-** Last update Fri May 27 13:57:09 2016 bougon_p
+** Last update Sat May 28 20:52:38 2016 Lucas Troncy
 */
 
 #include <time.h>
@@ -71,8 +71,8 @@ int	main(int argc, char **argv)
     if (strncmp(argv[3], "parfait", 7) == 0)
       all.perfect = true;
   srand(time(NULL) * getpid());
-  all.x = atoi(argv[1]);
-  all.y = atoi(argv[2]);
+  if ((all.x = atoi(argv[1])) <= 0 || (all.y = atoi(argv[2])) <= 0)
+    return (1);
   all.hunt_x = 0;
   all.hunt_y = 0;
   if (init_data(&all))
