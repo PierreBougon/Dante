@@ -5,7 +5,7 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Fri May 20 19:46:02 2016 bougon_p
-** Last update Fri May 20 19:46:03 2016 bougon_p
+** Last update Sat May 28 20:15:49 2016 bougon_p
 */
 
 #ifndef GET_NEXT_LINE_H_
@@ -16,7 +16,7 @@
 #  define READ_SIZE (4096)
 # endif /* !READ_SIZE_H_ */
 
-static char *my_realloc(char *, int);
+static char *my_grealloc(char *, int);
 char *get_next_line(const int fd);
 char *get_last_buff(char *, int *, int *, int *);
 
