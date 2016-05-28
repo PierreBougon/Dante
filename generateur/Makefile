@@ -5,7 +5,7 @@
 ## Login   <troncy_l@epitech.net>
 ## 
 ## Started on  Fri May 13 10:45:35 2016 Lucas Troncy
-## Last update Sat May 28 20:18:47 2016 bougon_p
+## Last update Sat May 28 23:56:52 2016 bougon_p
 ##
 
 DEBUG=	no
@@ -22,7 +22,7 @@ OBJS=	$(SRCS:.c=.o)
 ifeq ($(DEBUG), yes)
 CFLAGS=	-Iinclude -Wall -W -Werror -Wextra -ansi -pedantic -g -pg
 else
-CFLAGS=	-Iinclude -Wall -W -Werror -Wextra -ansi -pedantic -O2
+CFLAGS=	-Iinclude -Wall -W -Werror -Wextra -O2
 endif
 
 NAME=	generateur
