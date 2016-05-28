@@ -5,7 +5,7 @@
 ** Login   <troncy_l@epitech.net>
 **
 ** Started on  Thu May 12 10:46:35 2016 Lucas Troncy
-** Last update Fri May 27 19:23:08 2016 bougon_p
+** Last update Sat May 28 13:36:02 2016 Lucas Troncy
 */
 
 #include <stdlib.h>
@@ -56,11 +56,10 @@ int	get_rand(t_all *all, int *x, int *y, int nb)
 
 int		my_hunt(t_all *all)
 {
-  int		a;
+  static int	a = 0;
   int		b;
 
-  a = -1;
-  while (++a < all->y)
+  while (a < all->y)
     {
       b = -1;
       while (++b < all->x)
@@ -68,6 +67,7 @@ int		my_hunt(t_all *all)
 	  if (!all_hunt(all, a, b))
 	    return (0);
 	}
+      ++a;
     }
   return (1);
 }
