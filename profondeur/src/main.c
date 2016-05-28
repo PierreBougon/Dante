@@ -5,7 +5,7 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Sat Apr 30 17:25:34 2016 bougon_p
-** Last update Fri May 27 15:00:10 2016 bougon_p
+** Last update Sat May 28 18:12:36 2016 bougon_p
 */
 
 #include <stdlib.h>
@@ -54,38 +54,50 @@ bool		check_pile(t_graph *graph, int i, int j)
   return (false);
 }
 
-void	aff_case(t_pile *curr_pile, t_graph *graph, int i, int j)
+void	aff_case(t_graph *graph, int i, int j)
 {
   if (graph->tab[j][i] == NULL)
     {
       if (write(1, "X", 1) == -1)
 	return ;
     }
-  else if (curr_pile != NULL && check_pile(graph, i, j))
+  else if (graph->tab[j][i]->status == S_ROAD ||
+	   graph->tab[j][i]->status == START)
     {
       if (write(1, "o", 1) == -1)
-	return ;
-      curr_pile = curr_pile->next;
+  	return ;
     }
   else
     if (write(1, "*", 1) == -1)
       return ;
 }
 
+void		mark_road(t_graph *graph)
+{
+  t_pile	*curr_pile;
+
+  curr_pile = graph->road;
+  while (curr_pile)
+    {
+      graph->tab[curr_pile->node->pos.y]
+	[curr_pile->node->pos.x]->status = S_ROAD;
+      curr_pile = curr_pile->next;
+    }
+}
+
 void		write_map_solved(t_graph *graph)
 {
   int		i;
   int		j;
-  t_pile	*curr_pile;
 
   j = -1;
-  curr_pile = graph->road;
+  mark_road(graph);
   while (++j < graph->height)
     {
       i = -1;
       while (++i < graph->width)
 	{
-	  aff_case(curr_pile, graph, i, j);
+	  aff_case(graph, i, j);
 	}
       if (j != graph->height && write(1, "\n", 1) == -1)
 	return ;

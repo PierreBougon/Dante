@@ -5,7 +5,7 @@
 ** Login   <bougon_p@epitech.net>
 **
 ** Started on  Sat Apr 30 18:15:26 2016 bougon_p
-** Last update Fri May 13 16:56:05 2016 bougon_p
+** Last update Sat May 28 18:12:20 2016 bougon_p
 */
 
 #ifndef DANTE_H_
@@ -30,7 +30,8 @@ typedef	enum		e_satus
   {
     START,
     BASIC,
-    END
+    END,
+    S_ROAD
   }			t_status;
 
 typedef	struct		s_pos
